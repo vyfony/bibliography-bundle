@@ -21,7 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Anton Dyshkant <vyshkant@gmail.com>
  *
  * @ORM\Table(name="bibliography__record")
- * @ORM\Entity(repositoryClass="Vyfony\Bundle\BibliographyBundle\Persistence\Repository\BibliographicRecordRepository")
+ * @ORM\Entity
  */
 class BibliographicRecord
 {
