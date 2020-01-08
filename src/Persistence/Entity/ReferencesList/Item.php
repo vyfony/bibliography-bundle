@@ -63,7 +63,7 @@ class Item
     /**
      * @var BibliographicRecord
      *
-     * @ORM\ManyToOne(targetEntity="BibliographicRecord", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\BibliographicRecord", cascade={"persist"})
      * @ORM\JoinColumn(name="bibliographic_record_id", referencedColumnName="id", nullable=false)
      */
     private $bibliographicRecord;

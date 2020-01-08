@@ -47,8 +47,9 @@ class Authorship
 
     /**
      * @var BibliographicRecord
+     *
      * @ORM\ManyToOne(
-     *     targetEntity="BibliographicRecord",
+     *     targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\BibliographicRecord",
      *     cascade={"persist"},
      *     inversedBy="authorships"
      * )

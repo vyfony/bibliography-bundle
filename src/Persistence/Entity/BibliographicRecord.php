@@ -51,7 +51,7 @@ class BibliographicRecord
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="text", length=65535)
      */
     private $title;
 

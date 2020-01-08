@@ -1,7 +1,11 @@
-{{- bibliographicRecord.shortName -}}
-{{- ' — ' -}}
-{{- bibliographicRecord.authors -}}
-{{- '. ' -}}
-{{- bibliographicRecord.title -}}
-{{- ' // ' -}}
-{{- bibliographicRecord.details -}}
+{%- macro render_record(bibliographicRecord) -%}
+<span>
+    <span class="vyfony-bibliography-bibliographic-record-short-name">{{- bibliographicRecord.shortName -}}</span>
+    {{- ' — ' -}}
+    <span class="vyfony-bibliography-bibliographic-record-authors">{{- bibliographicRecord.authors -}}</span>
+    {{- '. ' -}}
+    <span class="vyfony-bibliography-bibliographic-record-title">{{- bibliographicRecord.title -}}</span>
+    {{- ' // ' -}}
+    <span class="vyfony-bibliography-bibliographic-record-details">{{- bibliographicRecord.details -}}</span>
+</span>
+{%- endmacro -%}
