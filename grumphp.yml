@@ -34,10 +34,6 @@ parameters:
       triggered_by: ['php']
       metadata:
         priority: -70
-    phpmnd:
-      exclude_path: ['vendor']
-      metadata:
-        priority: -80
     phpcsfixer2:
       config: .php_cs.dist
       metadata:
