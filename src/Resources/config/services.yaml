@@ -1,5 +1,7 @@
 services:
-  Vyfony\Bundle\BibliographyBundle\Persistence\Repository\BibliographicRecordRepository:
-    public: true
+  vyfony_bibliography.persistence.repository.bibliographic_record_repository:
+    class: Vyfony\Bundle\BibliographyBundle\Persistence\Repository\BibliographicRecordRepository
     arguments:
       - '@doctrine'
+
+  Vyfony\Bundle\BibliographyBundle\Persistence\Repository\BibliographicRecordRepository: '@vyfony_bibliography.persistence.repository.bibliographic_record_repository'
