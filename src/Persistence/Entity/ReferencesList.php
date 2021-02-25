@@ -11,16 +11,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Vyfony\Bundle\BibliographyBundle\Persistence\Entity\ReferencesList;
+namespace Vyfony\Bundle\BibliographyBundle\Persistence\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @author Anton Dyshkant <vyshkant@gmail.com>
- *
- * @ORM\Table(name="bibliography__references_list__references_list")
+ * @ORM\Table(name="bibliography__references_list")
  * @ORM\Entity
  */
 class ReferencesList
@@ -42,17 +40,17 @@ class ReferencesList
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @var Collection|Item[]
+     * @var Collection|ReferencesListItem[]
      *
      * @ORM\OneToMany(
-     *     targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\ReferencesList\Item",
+     *     targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\ReferencesListItem",
      *     cascade={"persist"},
      *     mappedBy="referencesList",
      *     orphanRemoval=true
@@ -66,14 +64,16 @@ class ReferencesList
         $this->items = new ArrayCollection();
     }
 
-    public function getId(): int
+    public function __toString(): string
+    {
+        return (string) $this->name;
+    }
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return ReferencesList
-     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -81,30 +81,25 @@ class ReferencesList
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @return ReferencesList
-     */
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param Collection|Item[] $items
-     *
-     * @return ReferencesList
+     * @param Collection|ReferencesListItem[] $items
      */
     public function setItems(Collection $items): self
     {
@@ -118,14 +113,14 @@ class ReferencesList
     }
 
     /**
-     * @return Collection|Item[]
+     * @return Collection|ReferencesListItem[]
      */
     public function getItems(): Collection
     {
         return $this->items;
     }
 
-    public function addItem(Item $item): void
+    public function addItem(ReferencesListItem $item): void
     {
         $item->setReferencesList($this);
 

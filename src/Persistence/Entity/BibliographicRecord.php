@@ -18,9 +18,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @author Anton Dyshkant <vyshkant@gmail.com>
- *
- * @ORM\Table(name="bibliography__record")
+ * @ORM\Table(name="bibliography__bibliographic_record")
  * @ORM\Entity
  */
 class BibliographicRecord
@@ -42,7 +40,7 @@ class BibliographicRecord
     private $shortName;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(name="authors", type="string", length=255, nullable=true)
      */
@@ -70,15 +68,14 @@ class BibliographicRecord
     private $year;
 
     /**
-     * @var Collection|Authorship[]
+     * @var Collection|Author[]
      *
-     * @ORM\OneToMany(
-     *     targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\Authorship",
+     * @ORM\ManyToMany(
+     *     targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\Author",
      *     cascade={"persist"},
-     *     mappedBy="bibliographicRecord",
-     *     orphanRemoval=true
+     *     inversedBy="bibliographicRecords"
      * )
-     * @ORM\OrderBy({"position": "ASC"})
+     * @ORM\JoinTable(name="bibliography__bibliographic_record_author")
      */
     private $authorships;
 
@@ -87,14 +84,16 @@ class BibliographicRecord
         $this->authorships = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return (string) $this->shortName;
+    }
+
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return BibliographicRecord
-     */
     public function setShortName(string $shortName): self
     {
         $this->shortName = $shortName;
@@ -102,29 +101,23 @@ class BibliographicRecord
         return $this;
     }
 
-    public function getShortName(): string
+    public function getShortName(): ?string
     {
         return $this->shortName;
     }
 
-    /**
-     * @return BibliographicRecord
-     */
-    public function setAuthors(string $authors): self
+    public function setAuthors(?string $authors): self
     {
         $this->authors = $authors;
 
         return $this;
     }
 
-    public function getAuthors(): string
+    public function getAuthors(): ?string
     {
         return $this->authors;
     }
 
-    /**
-     * @return BibliographicRecord
-     */
     public function setTitle(string $title): self
     {
         $this->title = $title;
@@ -132,14 +125,11 @@ class BibliographicRecord
         return $this;
     }
 
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @return BibliographicRecord
-     */
     public function setDetails(string $details): self
     {
         $this->details = $details;
@@ -147,14 +137,11 @@ class BibliographicRecord
         return $this;
     }
 
-    public function getDetails(): string
+    public function getDetails(): ?string
     {
         return $this->details;
     }
 
-    /**
-     * @return BibliographicRecord
-     */
     public function setYear(int $year): self
     {
         $this->year = $year;
@@ -162,13 +149,13 @@ class BibliographicRecord
         return $this;
     }
 
-    public function getYear(): int
+    public function getYear(): ?int
     {
         return $this->year;
     }
 
     /**
-     * @return Collection|Authorship[]
+     * @return Collection|Author[]
      */
     public function getAuthorships(): Collection
     {
@@ -176,24 +163,11 @@ class BibliographicRecord
     }
 
     /**
-     * @param Collection|Authorship[] $authorships
+     * @param Collection|Author[] $authorships
      */
     public function setAuthorships(Collection $authorships): self
     {
-        $this->authorships = new ArrayCollection();
-
-        foreach ($authorships as $authorship) {
-            $this->addAuthorship($authorship);
-        }
-
-        return $this;
-    }
-
-    public function addAuthorship(Authorship $authorship): self
-    {
-        $authorship->setBibliographicRecord($this);
-
-        $this->authorships[] = $authorship;
+        $this->authorships = $authorships;
 
         return $this;
     }

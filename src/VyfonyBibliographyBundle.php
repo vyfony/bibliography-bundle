@@ -15,9 +15,6 @@ namespace Vyfony\Bundle\BibliographyBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-/**
- * @author Anton Dyshkant <vyshkant@gmail.com>
- */
 final class VyfonyBibliographyBundle extends Bundle
 {
 }

@@ -18,8 +18,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @author Anton Dyshkant <vyshkant@gmail.com>
- *
  * @ORM\Table(name="bibliography__author")
  * @ORM\Entity
  */
@@ -42,20 +40,24 @@ class Author
     private $fullName;
 
     /**
-     * @var Collection|Authorship[]
+     * @var Collection|BibliographicRecord[]
      *
-     * @ORM\OneToMany(
-     *     targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\Authorship",
+     * @ORM\ManyToMany(
+     *     targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\BibliographicRecord",
      *     cascade={"persist"},
-     *     mappedBy="author",
-     *     orphanRemoval=false
+     *     mappedBy="authorships"
      * )
      */
-    private $authorships;
+    private $bibliographicRecords;
 
     public function __construct()
     {
-        $this->authorships = new ArrayCollection();
+        $this->bibliographicRecords = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return (string) $this->fullName;
     }
 
     public function getId(): int
@@ -63,9 +65,6 @@ class Author
         return $this->id;
     }
 
-    /**
-     * @return Author
-     */
     public function setFullName(string $fullName): self
     {
         $this->fullName = $fullName;
@@ -73,38 +72,25 @@ class Author
         return $this;
     }
 
-    public function getFullName(): string
+    public function getFullName(): ?string
     {
         return $this->fullName;
     }
 
     /**
-     * @return Collection|Authorship[]
+     * @return Collection|BibliographicRecord[]
      */
-    public function getAuthorships(): Collection
+    public function getBibliographicRecords(): Collection
     {
-        return $this->authorships;
+        return $this->bibliographicRecords;
     }
 
     /**
-     * @param Collection|Authorship[] $authorships
+     * @param Collection|BibliographicRecord[] $bibliographicRecords
      */
-    public function setAuthorships(Collection $authorships): self
+    public function setBibliographicRecords(Collection $bibliographicRecords): self
     {
-        $this->authorships = new ArrayCollection();
-
-        foreach ($authorships as $authorship) {
-            $this->addAuthorship($authorship);
-        }
-
-        return $this;
-    }
-
-    public function addAuthorship(Authorship $authorship): self
-    {
-        $authorship->setAuthor($this);
-
-        $this->authorships[] = $authorship;
+        $this->bibliographicRecords = $bibliographicRecords;
 
         return $this;
     }

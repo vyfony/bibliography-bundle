@@ -1,0 +1,55 @@
+menu:
+  groups:
+    bibliography:
+      label: Библиография
+  paragraphs:
+    bibliographicRecord:
+      label: Библиографические записи
+    author:
+      label: Авторы
+    referencesList:
+      label: Списки
+list:
+  bibliographicRecord:
+    fields:
+      shortName: Краткое название
+      authors: Авторы работы
+      title: Наименование работы
+      year: Год публикации
+  author:
+    fields:
+      fullName: Полное имя
+form:
+  author:
+    section:
+      data:
+        label: Сведения об авторе
+    fields:
+      fullName: Полное имя
+  bibliographicRecord:
+    section:
+      basicInformation:
+        label: Основная информация
+      details:
+        label: Детали библиографической записи
+    fields:
+      shortName: Краткое название
+      year: Год публикации
+      authorships: Привязка авторов
+      authors: Авторы работы
+      title: Наименование работы
+      details: Детали публикации
+  referencesList:
+    section:
+      information:
+        label: Сведения о списке
+      content:
+        label: Содержимое списка
+    fields:
+      name: Название
+      description: Описание
+      items: Элементы
+  referencesListItem:
+    fields:
+      bibliographicRecord: Библиографическая запись
+      position: Номер по порядку

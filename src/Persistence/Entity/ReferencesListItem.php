@@ -11,16 +11,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Vyfony\Bundle\BibliographyBundle\Persistence\Entity\ReferencesList;
+namespace Vyfony\Bundle\BibliographyBundle\Persistence\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Vyfony\Bundle\BibliographyBundle\Persistence\Entity\BibliographicRecord;
 
 /**
- * @author Anton Dyshkant <vyshkant@gmail.com>
- *
  * @ORM\Table(
- *     name="bibliography__references_list__item",
+ *     name="bibliography__references_list_item",
  *     uniqueConstraints={
  *         @ORM\UniqueConstraint(
  *             name="bibliographic_record_list_has_bibliographic_record",
@@ -30,7 +27,7 @@ use Vyfony\Bundle\BibliographyBundle\Persistence\Entity\BibliographicRecord;
  * )
  * @ORM\Entity
  */
-class Item
+class ReferencesListItem
 {
     /**
      * @var int
@@ -52,7 +49,7 @@ class Item
      * @var ReferencesList
      *
      * @ORM\ManyToOne(
-     *     targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\ReferencesList\ReferencesList",
+     *     targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\ReferencesList",
      *     cascade={"persist"},
      *     inversedBy="items"
      * )
@@ -73,9 +70,6 @@ class Item
         return $this->id;
     }
 
-    /**
-     * @return Item
-     */
     public function setPosition(int $position): self
     {
         $this->position = $position;
@@ -83,14 +77,11 @@ class Item
         return $this;
     }
 
-    public function getPosition(): int
+    public function getPosition(): ?int
     {
         return $this->position;
     }
 
-    /**
-     * @return Item
-     */
     public function setReferencesList(ReferencesList $referencesList): self
     {
         $this->referencesList = $referencesList;
@@ -103,9 +94,6 @@ class Item
         return $this->referencesList;
     }
 
-    /**
-     * @return Item
-     */
     public function setBibliographicRecord(BibliographicRecord $bibliographicRecord): self
     {
         $this->bibliographicRecord = $bibliographicRecord;
@@ -113,7 +101,7 @@ class Item
         return $this;
     }
 
-    public function getBibliographicRecord(): BibliographicRecord
+    public function getBibliographicRecord(): ?BibliographicRecord
     {
         return $this->bibliographicRecord;
     }
