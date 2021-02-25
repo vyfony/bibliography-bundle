@@ -33,7 +33,11 @@ final class ReferencesListItemAdmin extends AbstractEntityAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('bibliographicRecord', ModelListType::class, $this->createLabeledFormOptions('bibliographicRecord', ['required' => true]))
+            ->add(
+                'bibliographicRecord',
+                ModelListType::class,
+                $this->createLabeledFormOptions('bibliographicRecord', ['required' => true])
+            )
             ->add('position', HiddenType::class, $this->createLabeledFormOptions('position'))
         ;
     }
