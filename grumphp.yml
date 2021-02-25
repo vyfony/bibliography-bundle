@@ -1,4 +1,4 @@
-parameters:
+grumphp:
   hide_circumvention_tip: true
   process_timeout: null
   ascii:
@@ -47,7 +47,9 @@ parameters:
       always_execute: true
       metadata:
         priority: -110
-    securitychecker:
+    securitychecker_enlightn:
+      lockfile: ./composer.lock
+      run_always: true
       metadata:
         priority: -120
     phan:

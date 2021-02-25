@@ -15,9 +15,6 @@ namespace Vyfony\Bundle\BibliographyBundle\Tests;
 
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Anton Dyshkant <vyshkant@gmail.com>
- */
 final class VyfonyBibliographyBundleTest extends TestCase
 {
     public function testBundleClassExists(): void

@@ -17,9 +17,6 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Vyfony\Bundle\BibliographyBundle\Persistence\Entity\BibliographicRecord;
 
-/**
- * @author Anton Dyshkant <vyshkant@gmail.com>
- */
 class BibliographicRecordRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)

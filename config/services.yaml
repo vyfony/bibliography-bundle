@@ -1,0 +1,31 @@
+services:
+  vyfony_bibliography.persistence.repository.bibliographic_record_repository:
+    class: Vyfony\Bundle\BibliographyBundle\Persistence\Repository\BibliographicRecordRepository
+    arguments:
+      - '@doctrine'
+
+  Vyfony\Bundle\BibliographyBundle\Persistence\Repository\BibliographicRecordRepository: '@vyfony_bibliography.persistence.repository.bibliographic_record_repository'
+
+  vyfony_bibliography.admin.bibliographic_record:
+    class: Vyfony\Bundle\BibliographyBundle\Admin\BibliographicRecordAdmin
+    arguments: [null, Vyfony\Bundle\BibliographyBundle\Persistence\Entity\BibliographicRecord, null]
+    tags:
+      - { name: sonata.admin, manager_type: orm }
+
+  vyfony_bibliography.admin.author:
+    class: Vyfony\Bundle\BibliographyBundle\Admin\AuthorAdmin
+    arguments: [null, Vyfony\Bundle\BibliographyBundle\Persistence\Entity\Author, null]
+    tags:
+      - { name: sonata.admin, manager_type: orm }
+
+  vyfony_bibliography.admin.references_list:
+    class: Vyfony\Bundle\BibliographyBundle\Admin\ReferencesListAdmin
+    arguments: [null, Vyfony\Bundle\BibliographyBundle\Persistence\Entity\ReferencesList, null]
+    tags:
+      - { name: sonata.admin, manager_type: orm }
+
+  vyfony_bibliography.admin.references_list_item:
+    class: Vyfony\Bundle\BibliographyBundle\Admin\ReferencesListItemAdmin
+    arguments: [null, Vyfony\Bundle\BibliographyBundle\Persistence\Entity\ReferencesListItem, null]
+    tags:
+      - { name: sonata.admin, manager_type: orm }
