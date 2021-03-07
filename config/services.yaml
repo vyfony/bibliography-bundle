@@ -9,23 +9,31 @@ services:
   vyfony_bibliography.admin.bibliographic_record:
     class: Vyfony\Bundle\BibliographyBundle\Admin\BibliographicRecordAdmin
     arguments: [null, Vyfony\Bundle\BibliographyBundle\Persistence\Entity\BibliographicRecord, null]
+    calls:
+      - [ setLabelTranslatorStrategy, [ '@sonata.admin.label.strategy.underscore' ] ]
     tags:
       - { name: sonata.admin, manager_type: orm }
 
   vyfony_bibliography.admin.author:
     class: Vyfony\Bundle\BibliographyBundle\Admin\AuthorAdmin
     arguments: [null, Vyfony\Bundle\BibliographyBundle\Persistence\Entity\Author, null]
+    calls:
+      - [ setLabelTranslatorStrategy, [ '@sonata.admin.label.strategy.underscore' ] ]
     tags:
       - { name: sonata.admin, manager_type: orm }
 
   vyfony_bibliography.admin.references_list:
     class: Vyfony\Bundle\BibliographyBundle\Admin\ReferencesListAdmin
     arguments: [null, Vyfony\Bundle\BibliographyBundle\Persistence\Entity\ReferencesList, null]
+    calls:
+      - [ setLabelTranslatorStrategy, [ '@sonata.admin.label.strategy.underscore' ] ]
     tags:
       - { name: sonata.admin, manager_type: orm }
 
   vyfony_bibliography.admin.references_list_item:
     class: Vyfony\Bundle\BibliographyBundle\Admin\ReferencesListItemAdmin
     arguments: [null, Vyfony\Bundle\BibliographyBundle\Persistence\Entity\ReferencesListItem, null]
+    calls:
+      - [ setLabelTranslatorStrategy, [ '@sonata.admin.label.strategy.underscore' ] ]
     tags:
       - { name: sonata.admin, manager_type: orm }
