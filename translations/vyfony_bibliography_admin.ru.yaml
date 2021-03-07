@@ -8,17 +8,20 @@ menu:
     author:
       label: Авторы
     referencesList:
-      label: Списки
+      label: Списки литературы
 list:
+  author:
+    fields:
+      fullName: Полное имя
   bibliographicRecord:
     fields:
       shortName: Краткое название
       authors: Авторы работы
       title: Наименование работы
       year: Год публикации
-  author:
+  referencesList:
     fields:
-      fullName: Полное имя
+      name: Название списка
 form:
   author:
     section:
@@ -53,3 +56,11 @@ form:
     fields:
       bibliographicRecord: Библиографическая запись
       position: Номер по порядку
+
+breadcrumb:
+  link_author_list: Авторы
+  link_author_create: Добавить автора
+  link_bibliographic_record_list: Библиографические записи
+  link_bibliographic_record_create: Добавить запись
+  link_references_list_list: Списки литературы
+  link_references_list_create: Создать список
