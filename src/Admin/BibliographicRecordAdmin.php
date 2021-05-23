@@ -15,10 +15,6 @@ namespace  Vyfony\Bundle\BibliographyBundle\Admin;
 
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\ModelType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Vyfony\Bundle\BibliographyBundle\Admin\Abstraction\AbstractEntityAdmin;
 
 final class BibliographicRecordAdmin extends AbstractEntityAdmin
@@ -37,7 +33,6 @@ final class BibliographicRecordAdmin extends AbstractEntityAdmin
     {
         $listMapper
             ->addIdentifier('shortName', null, $this->createLabeledListOptions('shortName'))
-            ->add('authors', null, $this->createLabeledListOptions('authors'))
             ->add('title', null, $this->createLabeledListOptions('title'))
             ->add('year', null, $this->createLabeledListOptions('year'))
         ;
@@ -47,14 +42,13 @@ final class BibliographicRecordAdmin extends AbstractEntityAdmin
     {
         $formMapper
             ->with('form.bibliographicRecord.section.basicInformation.label', ['class' => 'col-md-7'])
-                ->add('shortName', TextType::class, $this->createLabeledFormOptions('shortName'))
-                ->add('year', IntegerType::class, $this->createLabeledFormOptions('year'))
-                ->add('authorships', ModelType::class, $this->createLabeledManyToManyFormOptions('authorships'))
+                ->add('shortName', null, $this->createLabeledFormOptions('shortName'))
+                ->add('title', null, $this->createLabeledFormOptions('title'))
+                ->add('year', null, $this->createLabeledFormOptions('year'))
+                ->add('authors', null, $this->createLabeledManyToManyFormOptions('authors'))
             ->end()
             ->with('form.bibliographicRecord.section.details.label', ['class' => 'col-md-5'])
-                ->add('authors', TextType::class, $this->createLabeledFormOptions('authors'))
-                ->add('title', TextType::class, $this->createLabeledFormOptions('title'))
-                ->add('details', TextareaType::class, $this->createLabeledFormOptions('details'))
+                ->add('displayedValue', null, $this->createLabeledFormOptions('displayedValue'))
             ->end()
         ;
     }

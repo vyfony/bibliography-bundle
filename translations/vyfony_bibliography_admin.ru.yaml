@@ -16,7 +16,6 @@ list:
   bibliographicRecord:
     fields:
       shortName: Краткое название
-      authors: Авторы работы
       title: Наименование работы
       year: Год публикации
   referencesList:
@@ -37,11 +36,10 @@ form:
         label: Детали библиографической записи
     fields:
       shortName: Краткое название
-      year: Год публикации
-      authorships: Привязка авторов
-      authors: Авторы работы
       title: Наименование работы
-      details: Детали публикации
+      year: Год публикации
+      authors: Авторы работы
+      displayedValue: Отображаемое значение
   referencesList:
     section:
       information:

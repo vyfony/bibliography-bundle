@@ -45,7 +45,7 @@ class Author
      * @ORM\ManyToMany(
      *     targetEntity="Vyfony\Bundle\BibliographyBundle\Persistence\Entity\BibliographicRecord",
      *     cascade={"persist"},
-     *     mappedBy="authorships"
+     *     mappedBy="authors"
      * )
      */
     private $bibliographicRecords;

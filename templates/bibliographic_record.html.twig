@@ -2,12 +2,6 @@
 <span>
     <span class="vyfony-bibliography-bibliographic-record-short-name">{{- bibliographicRecord.shortName -}}</span>
     {{- ' — ' -}}
-    {%- if bibliographicRecord.authors|length > 0 -%}
-    <span class="vyfony-bibliography-bibliographic-record-authors">{{- bibliographicRecord.authors -}}</span>
-    {{- '. ' -}}
-    {%- endif -%}
-    <span class="vyfony-bibliography-bibliographic-record-title">{{- bibliographicRecord.title -}}</span>
-    {{- ' // ' -}}
-    <span class="vyfony-bibliography-bibliographic-record-details">{{- bibliographicRecord.details -}}</span>
+    <span class="vyfony-bibliography-bibliographic-record-displayed-value">{{- bibliographicRecord.displayedValue -}}</span>
 </span>
 {%- endmacro -%}

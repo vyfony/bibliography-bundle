@@ -40,13 +40,6 @@ class BibliographicRecord
     private $shortName;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="authors", type="string", length=255, nullable=true)
-     */
-    private $authors;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="title", type="text", length=65535)
@@ -56,9 +49,9 @@ class BibliographicRecord
     /**
      * @var string
      *
-     * @ORM\Column(name="details", type="text", length=65535)
+     * @ORM\Column(name="displayed_value", type="text", length=65535)
      */
-    private $details;
+    private $displayedValue;
 
     /**
      * @var int
@@ -77,11 +70,11 @@ class BibliographicRecord
      * )
      * @ORM\JoinTable(name="bibliography__bibliographic_record_author")
      */
-    private $authorships;
+    private $authors;
 
     public function __construct()
     {
-        $this->authorships = new ArrayCollection();
+        $this->authors = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -106,18 +99,6 @@ class BibliographicRecord
         return $this->shortName;
     }
 
-    public function setAuthors(?string $authors): self
-    {
-        $this->authors = $authors;
-
-        return $this;
-    }
-
-    public function getAuthors(): ?string
-    {
-        return $this->authors;
-    }
-
     public function setTitle(string $title): self
     {
         $this->title = $title;
@@ -130,16 +111,16 @@ class BibliographicRecord
         return $this->title;
     }
 
-    public function setDetails(string $details): self
+    public function setDisplayedValue(string $displayedValue): self
     {
-        $this->details = $details;
+        $this->displayedValue = $displayedValue;
 
         return $this;
     }
 
-    public function getDetails(): ?string
+    public function getDisplayedValue(): ?string
     {
-        return $this->details;
+        return $this->displayedValue;
     }
 
     public function setYear(int $year): self
@@ -157,17 +138,17 @@ class BibliographicRecord
     /**
      * @return Collection|Author[]
      */
-    public function getAuthorships(): Collection
+    public function getAuthors(): Collection
     {
-        return $this->authorships;
+        return $this->authors;
     }
 
     /**
-     * @param Collection|Author[] $authorships
+     * @param Collection|Author[] $authors
      */
-    public function setAuthorships(Collection $authorships): self
+    public function setAuthors(Collection $authors): self
     {
-        $this->authorships = $authorships;
+        $this->authors = $authors;
 
         return $this;
     }
